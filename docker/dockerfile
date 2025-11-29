@@ -1,0 +1,24 @@
+FROM continuumio/miniconda3
+
+# Create environment
+RUN conda install -y mamba -n base -c conda-forge
+
+# Install dependencies
+RUN mamba install -y -c conda-forge -c bioconda \
+    python=3.10 \
+    scanpy \
+    anndata \
+    celltypist \
+    scvi-tools \
+    scipy \
+    pandas \ 
+    pip
+
+# Install Java and Nextflow
+RUN apt-get update && \
+    apt-get install -y curl openjdk-17-jdk zip unzip && \
+    curl -s https://get.nextflow.io | bash && \
+    mv nextflow /usr/local/bin/ && \
+    chmod +x /usr/local/bin/nextflow
+
+WORKDIR /workspace
