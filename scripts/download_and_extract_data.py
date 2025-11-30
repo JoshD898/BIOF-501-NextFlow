@@ -2,7 +2,6 @@ import tarfile
 import gzip
 import os
 import urllib.request
-import shutil
 import io
 import argparse
 
