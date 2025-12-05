@@ -18,6 +18,7 @@ def train_scvi(adata: ad.AnnData, **kwargs) -> scvi.model.SCVI:
     **kwargs : dict
         Any arguments to pass to model.train(), e.g., max_epochs = 10, early_stopping = True
     '''
+    scvi.settings.seed(42)
     scvi.model.SCVI.setup_anndata(adata)
     model = scvi.model.SCVI(adata)
     model.train(**kwargs)
