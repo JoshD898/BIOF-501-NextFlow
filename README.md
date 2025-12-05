@@ -4,7 +4,7 @@ This is a project to demonstrate analysis of scRNAseq data using a NextFlow pipe
 
 The dataset analyzed here consists of 10x Genomics scRNA-seq data of peripheral blood mononuclear cells (PBMCs) collected from six COVID-19 patients and three healthy controls (Accession number: [GSE166992](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE166992)). This dataset provides a valuable opportunity to explore immune cell responses and transcriptional changes associated with COVID-19 infection at single-cell resolution.
 
-A central goal of this analysis is to perform differential expression (DE) analysis to identify genes and pathways altered in disease states. For this, we use [scVI](https://doi.org/10.1038/s41592-018-0229-2) (single-cell Variational Inference), a deep generative model designed specifically for single-cell data. Unlike traditional DE methods, scVI:
+A central goal of this analysis is to perform differential expression (DE) analysis to identify genes and pathways altered in disease states. [scVI](https://doi.org/10.1038/s41592-018-0229-2) (single-cell Variational Inference) is a deep generative model designed specifically for single-cell data that can be used for this task. Unlike traditional DE methods, scVI:
 
 * Accounts for technical variability such as batch effects and differences in sequencing depth.
 
@@ -70,7 +70,7 @@ The workflow can be broken down into the following steps:
 1. Download and preparation of the dataset from the NCIB GEO Database
     * The database is queried automitically in this workflow, so no need to get the data yourself
 2. Downsampling of the data for testing purposes
-    * Between all the patients there are over 60 000 cells, with more than 30 000 gnes measured per cell
+    * Between all the patients there are over 60 000 cells, with more than 30 000 genes measured per cell
     * To speed up the training of scVI, only 2000 cells per patient are randomly carried forward for analysis
 3. Train scVI
     * To reduce training time, the model is trained for only 30 epochs before saving the final model.
